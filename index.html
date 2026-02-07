@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // --- PASTE YOUR FIREBASE CONFIG HERE FROM PHASE 1 ---
+      const myConfig = {
+        apiKey: "PASTE_YOUR_API_KEY_HERE",
+        authDomain: "PASTE_YOUR_PROJECT_ID.firebaseapp.com",
+        projectId: "PASTE_YOUR_PROJECT_ID",
+        storageBucket: "PASTE_YOUR_PROJECT_ID.appspot.com",
+        messagingSenderId: "PASTE_SENDER_ID",
+        appId: "PASTE_APP_ID"
+      };
+      // ----------------------------------------------------
+      
+      // This allows the React code to read it
+      window.__firebase_config = JSON.stringify(myConfig);
+      window.__app_id = "seel-live-v1"; 
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+
