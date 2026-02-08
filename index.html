@@ -1,30 +1,47 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Seel</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seel Social</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body class="bg-gray-50">
+    <div id="root"></div>
+
+    <!-- Replace the placeholder below with your actual Firebase Config from the Firebase Console -->
     <script>
-      // --- PASTE YOUR FIREBASE CONFIG HERE FROM PHASE 1 ---
-      const myConfig = {
-         apiKey: "AIzaSyBdzfasXLtnSAhmmuX3UTSOctc94_QSTsA",
+        window.__app_id = "your-app-id";
+        window.__firebase_config = JSON.stringify({
+             apiKey: "AIzaSyBdzfasXLtnSAhmmuX3UTSOctc94_QSTsA",
   authDomain: "seel-app-b8994.firebaseapp.com",
   projectId: "seel-app-b8994",
   storageBucket: "seel-app-b8994.firebasestorage.app",
   messagingSenderId: "405136994306",
   appId: "1:405136994306:web:a44ed32f666cbed32ef71b"
 
-      };
-      // ----------------------------------------------------
-      
-      // This allows the React code to read it
-      window.__firebase_config = JSON.stringify(myConfig);
-      window.__app_id = "seel-live-v1"; 
+        });
     </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+    <!-- This pulls in your App.jsx logic -->
+    <script type="text/babel" src="App.jsx"></script>
+
+    <script type="text/babel">
+        // Helper to wait until App.jsx is loaded and initialized
+        function mountApp() {
+            if (window.App) {
+                const root = ReactDOM.createRoot(document.getElementById('root'));
+                root.render(React.createElement(window.App));
+            } else {
+                setTimeout(mountApp, 100);
+            }
+        }
+        mountApp();
+    </script>
+</body>
 </html>
+
+
